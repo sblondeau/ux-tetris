@@ -1,0 +1,9 @@
+{% props tetromino %}
+<div
+    class="tetromino"
+>
+
+{% for brick in tetromino.bricks  %}
+    <twig:Brick :brick="brick" />
+{% endfor %}
+</div>
