@@ -21,7 +21,7 @@ final class Loop
     use DefaultActionTrait;
     use ComponentToolsTrait;
 
-    public const int DELAY_STEP_PERCENT = 10;
+    public const DELAY_STEP_PERCENT = 10;
 
     #[LiveProp]
     public int $delay = 800;
