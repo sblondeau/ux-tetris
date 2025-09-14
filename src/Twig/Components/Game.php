@@ -21,11 +21,11 @@ final class Game
     use DefaultActionTrait;
     use ComponentToolsTrait;
 
-    public const int WIDTH = 10;
-    public const int HEIGHT = 22;
+    public const WIDTH = 10;
+    public const HEIGHT = 22;
 
-    public const int BASE_SCORE = 10;
-    public const int CHANGE_LEVEL = 3;
+    public const BASE_SCORE = 10;
+    public const CHANGE_LEVEL = 3;
 
     public int $width = self::WIDTH;
     public int $height = self::HEIGHT;

@@ -4,7 +4,7 @@ namespace App\Tetrominos;
 
 class Tetromino
 {
-    public const array COLORS = ['yellow', 'blue', 'red', 'green'];
+    public const COLORS = ['yellow', 'blue', 'red', 'green'];
 
     public array $bricks = [];
 

@@ -6,7 +6,7 @@ use App\Tetrominos\Brick;
 
 class TetrominoS extends Tetromino
 {
-    public const string COLOR = '#42b642';
+    public const COLOR = '#42b642';
     public array $bricks = [];
 
     public function __construct()

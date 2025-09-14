@@ -7,7 +7,7 @@ use App\Twig\Components\Game;
 
 class TetrominoGarbage extends Tetromino
 {
-    public const string COLOR = 'grey';
+    public const COLOR = 'grey';
     public array $bricks = [];
     public function __construct(int $lines)
     {
