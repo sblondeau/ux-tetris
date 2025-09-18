@@ -31,6 +31,7 @@ dialog {
     display: flex;
     flex-direction: column;
     align-items: stretch;
+    text-align: center;
     z-index: 2;
     gap: var(--spacing-2);
     padding: var(--spacing-2);
@@ -46,6 +47,9 @@ dialog {
     font-family: "Courier New", Courier, monospace;
     .instructions input {
         width: 100%;
+    }
+    .header {
+        margin-bottom: var(--spacing-3);
     }
 }
 
@@ -85,8 +89,11 @@ dialog {
     &.pause.waiting::before {
         content: "Waiting for other player";
     }
-    &.gameover::before {
+    &.pause.gameover::before {
         content: "Game Over";
+    }
+    &.pause.waiting.youwin::before {
+        content: "You win";
     }
 }
 
@@ -196,4 +203,10 @@ dialog {
     background: linear-gradient(0, var(--light-color) 20%, var(--color) 100%);
     grid-column: var(--x);
     grid-row: var(--y);
+}
+
+.youwin {
+    color: #31c7ef;
+    font-weight: bold;
+    padding-inline-start: var(--spacing-1);
 }

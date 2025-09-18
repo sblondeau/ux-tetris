@@ -4,7 +4,6 @@ import { getComponent } from '@symfony/ux-live-component';
 export default class extends Controller {
     static values = { mercureUrl: String }
     async initialize() {
-        console.log('g');
         this.component = await getComponent(this.element);
     }    
 

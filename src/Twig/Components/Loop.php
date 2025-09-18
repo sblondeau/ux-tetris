@@ -47,6 +47,9 @@ final class Loop
     #[LiveProp()]
     public bool $config = false;
 
+    #[LiveProp()]
+    public bool $winner = false;
+
     public function __construct(
         private HubInterface $hub,
     ) {
@@ -125,18 +128,32 @@ final class Loop
     }
 
     #[LiveAction]
-    public function start(#[LiveArg] string $player, #[LiveArg] string $gameName, #[LiveArg] $shouldStart = false ): void
+    public function start(#[LiveArg] string $player, #[LiveArg] string $gameName, #[LiveArg] $shouldStart = false, #[LiveArg] $youWin = false ): void
     {
         if ($gameName === $this->gameName && $player !== $this->player) {
             $this->otherPlayer = $this->player;
         }
         $this->pause = !$shouldStart;
-        
+        $this->winner = $youWin;
     }
 
     #[LiveListener('stop')]
     public function stop(): void
     {
         $this->gameOver = true;
+        if($this->multiplayer) {
+            $update = new Update(
+                'start',
+                json_encode(
+                    [
+                        'gameName' => $this->gameName,
+                        'player' => $this->player,
+                        'youWin' => true,
+                    ]
+                )
+            );
+
+            $this->hub->publish($update);
+        }
     }
 }

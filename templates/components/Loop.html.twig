@@ -9,7 +9,10 @@
 
     {% if not config %}
     <dialog>
-        <h2>Game configuration</h2>
+        <div class="header">
+            <h2>Game configuration</h2>
+            <small>Hint: Move with arrows | Rotation with Q and D</small>
+        </div>
 
         <div>
             {% if not multiplayer %}
@@ -34,7 +37,7 @@
     </dialog>
     
   {% endif %}
-    {% if otherPlayer is not null and pause %}
+    {% if otherPlayer is not null and pause and not winner %}
         <dialog>
             The second player {{ otherPlayer }} is ready, please clic to start game
             <button data-action="live#action" data-live-action-param="startMultiplayer">Start</button> 
@@ -51,8 +54,7 @@
         {% endif %}
     </div>
 
-    <div class="gameboard {{ not  onPlay ? 'pause' }} {{ gameOver ? 'gameover' }} {{ multiplayer and not onPlay ? 'waiting' }}">      
-            
+    <div class="gameboard {{ not  onPlay ? 'pause' }} {{ gameOver ? 'gameover' }} {{ multiplayer and not onPlay ? 'waiting' }} {{ winner and not gameOver ? 'youwin' }}">      
         <twig:Game :player="player" :gameName="gameName" :onPlay="onPlay" />
     </div>
 </div> 
