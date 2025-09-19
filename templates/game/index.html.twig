@@ -1,10 +1,23 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello GameController!{% endblock %}
-
 {% block body %}
 
 <div class="container">
+    <div class="credits">
+        <div>
+            <twig:ux:icon name="simple-icons:creativecommons" width="2em" /> by-sa Sylvain Blondeau 
+        </div>
+        <a title="Github" href="https://github.com/sblondeau/ux-tetris">
+            <twig:ux:icon name="flowbite:github-solid" width="2em" /> 
+        </a>
+        <a title="Linkedin" href="https://www.linkedin.com/in/sylvain-blondeau/">
+            <twig:ux:icon name="flowbite:linkedin-solid" width="2em" />
+        </a>
+        <a title="Youtube" href="https://www.youtube.com/channel/UCRma248TAp0KCumSXxA1oQg">
+            <twig:ux:icon name="flowbite:youtube-solid" width="2em" />
+        </a>
+    </div> 
+
     <h1>Tetris</h1>
 
     <twig:Loop></twig:Loop>

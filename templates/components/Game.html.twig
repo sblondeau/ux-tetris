@@ -1,42 +1,66 @@
 <div{{attributes.defaults(stimulus_controller('game',{mercureUrl:mercure('game'),}))}}
-    class="board">
-    <div
-        class="game"
-        style="--width:{{ width }}; --height: {{ height }}"
-        {% if onPlay %}
-            data-action="
-            keydown.left@document->game#moveLeft:prevent
-            keydown.right@document->game#moveRight:prevent
-            keydown.down@document->game#moveDown:prevent
-            keydown.q@document->game#rotateLeft:prevent
-            keydown.d@document->game#rotateRight:prevent"
-        {% endif %}
-        >
-        {% for tetromino in tetrominos %}
-            <twig:Tetromino
-                :tetromino="tetromino"/>
-        {% endfor %}
-    </div>
-    <div>
+   class="board-controls">
+    <div class="board">
         <div
-            class="left">
-            <div>
-                <span>Score</span>
-                {{ score }}</div>
-            <div>
-                <span>Level</span>
-                {{ level}}</div>
-            <div>
-                <span>Lines</span>
-                {{ lines}}</div>
-            <div>
-                <span>Next</span>
-                <div
-                    class="next">
-                    <twig:Tetromino
-                        :tetromino="nextTetromino"/>
+            class="game"
+            style="--width:{{ width }}; --height: {{ height }}"
+            {% if onPlay %}
+                data-action="
+                keydown.left@document->game#moveLeft:prevent
+                keydown.right@document->game#moveRight:prevent
+                keydown.down@document->game#moveDown:prevent
+                keydown.q@document->game#rotateLeft:prevent
+                keydown.d@document->game#rotateRight:prevent"
+            {% endif %}
+            >
+            {% for tetromino in tetrominos %}
+                <twig:Tetromino
+                    :tetromino="tetromino"/>
+            {% endfor %}
+        </div>
+        <div>
+            <div
+                class="left">
+                <div>
+                    <span>Score</span>
+                    {{ score }}</div>
+                <div>
+                    <span>Level</span>
+                    {{ level}}</div>
+                <div>
+                    <span>Lines</span>
+                    {{ lines}}</div>
+                <div>
+                    <span>Next</span>
+                    <div
+                        class="next">
+                        <twig:Tetromino
+                            :tetromino="nextTetromino"/>
+                    </div>
                 </div>
             </div>
         </div>
+    </div>
+
+    <div class="controls">
+        <div>
+            <button class="btn" data-action="live#action" data-live-action-param="rotateLeft">
+                <twig:ux:icon name="fa7-solid:rotate-left"  />
+            </button>
+            <button class="btn" data-action="live#action" data-live-action-param="rotateRight">
+                <twig:ux:icon name="fa7-solid:rotate-right"/>
+            </button>
+            <button class="btn" data-action="live#action" data-live-action-param="moveLeft">
+                <twig:ux:icon name="bi:chevron-left"  />
+            </button>
+            <button class="btn" data-action="live#action" data-live-action-param="moveDown">
+                <twig:ux:icon name="bi:chevron-down"  />
+            </button>
+            <button class="btn" data-action="live#action" data-live-action-param="moveRight">
+                <twig:ux:icon name="bi:chevron-right" />
+            </button>
+        </div>
+        
+        <small>Move with arrows | Rotation with Q and D</small>
     </div>
 </div>

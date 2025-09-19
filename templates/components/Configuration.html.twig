@@ -1,0 +1,29 @@
+<dialog>
+    <div class="header">
+        <h2>Game configuration</h2>
+    </div>
+
+    <div>
+        {% if not multiplayer %}
+            <label>
+                single
+                <input type="radio" name="multiplayer" value="0" data-model="multiplayer">
+            </label>
+            <label>
+                multiplayer
+                <input id="multi" type="radio" name="multiplayer" value="1" data-model="multiplayer">
+            </label>
+        {% else %}
+            <div class="instructions">
+                <p>- if you are the game creator : share the game name with other player</p>
+                <p>- if you want to join a game, copy her the game name provided by the other player</p>
+                <label>
+                Game name
+                <input type="text" data-model="gameName">  
+                </label>
+            </div>
+        {% endif %}
+    </div>
+
+    <button class="btn" data-action="live#action" data-live-action-param="configuration">Confirm</button>
+</dialog>

@@ -1,59 +1,21 @@
 <div {{attributes.defaults(stimulus_controller('loop', {
         mercureUrl: mercure('start'),
     }))}}
-
+class="game-wrapper"
 {% if onPlay %}
     data-poll="delay({{delay}})|loop"
 {% endif %}
 >
-
-    {% if not config %}
-    <dialog>
-        <div class="header">
-            <h2>Game configuration</h2>
-            <small>Hint: Move with arrows | Rotation with Q and D</small>
-        </div>
-
-        <div>
-            {% if not multiplayer %}
-                <label>
-                    single
-                    <input type="radio" name="multiplayer" value="0" data-model="multiplayer">
-                </label>
-                <label>
-                    multiplayer
-                    <input id="multi" type="radio" name="multiplayer" value="1" data-model="multiplayer">
-                </label>
-            {% else %}
-                <div class="instructions">
-                    <p>- if you are the game creator : share the game name with other player</p>
-                    <p>- if you want to join a game, copy her the game name provided by the other player</p>
-                    <input type="text" data-model="gameName">  
-                </div>
-            {% endif %}
-        </div>
-
-        <button class="btn" data-action="live#action" data-live-action-param="configuration">Confirm</button>
-    </dialog>
-    
-  {% endif %}
-    {% if otherPlayer is not null and pause and not winner %}
-        <dialog>
-            The second player {{ otherPlayer }} is ready, please clic to start game
-            <button data-action="live#action" data-live-action-param="startMultiplayer">Start</button> 
-        </dialog>
+    {% if config %}
+        <twig:GameInfo :multiplayer="multiplayer" :pause="pause" :gameName="gameName" />
+    {% else %}
+        <twig:Configuration :multiplayer="multiplayer" />    
     {% endif %}
-    <div class="game-info">
-        {% if not multiplayer %}
-        <label class="btn">
-            <input type="checkbox" data-model="pause" hidden />
-            {{ pause ? 'Start' : 'Pause' }}
-        </label>
-        {% else %}
-            <div>Game name {{ gameName }}</div>
-        {% endif %}
-    </div>
 
+    {% if otherPlayer is not null and pause and not winner %}
+        <twig:ConfirmMulti :otherPlayer="otherPlayer" :multiplayer="multiplayer" />    
+    {% endif %}
+    
     <div class="gameboard {{ not  onPlay ? 'pause' }} {{ gameOver ? 'gameover' }} {{ multiplayer and not onPlay ? 'waiting' }} {{ winner and not gameOver ? 'youwin' }}">      
         <twig:Game :player="player" :gameName="gameName" :onPlay="onPlay" />
     </div>

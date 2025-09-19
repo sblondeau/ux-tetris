@@ -1,0 +1,14 @@
+<div {{ attributes }} class="game-info">
+    {% if not multiplayer %}
+    <label class="btn">
+        <input type="checkbox" data-model="pause" hidden />
+        {% if pause %}
+            Start
+        {% else %}
+            <twig:ux:icon name="bi:pause-fill" width="1em" /> Pause
+        {% endif %}
+    </label>
+    {% else %}
+        <div>Game name {{ gameName }}</div>
+    {% endif %}
+</div>
