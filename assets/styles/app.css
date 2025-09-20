@@ -30,6 +30,7 @@ body {
     width: 100%;
     font-family: Tetris;
     background-size: cover;
+    height: 100%;
 }
 
 h1 {
@@ -97,7 +98,7 @@ dialog {
     &::after {
         content: "";
         position: fixed;
-        inset:0;
+        inset: 0;
         width: 100vw;
         height: 100vh;
         background-color: rgba(0, 0, 0, 0.5);
@@ -108,36 +109,47 @@ dialog {
 .container {
     display: flex;
     flex-direction: column;
-    width: 100%;
-    margin-inline: var(--spacing-2);
     align-items: center;
-    & > .game-wrapper  {
+    width: calc(100% - var(--spacing-2) * 2);
+    margin-inline: var(--spacing-2);
+    & > .game-wrapper {
         display: flex;
         flex-direction: column;
         gap: var(--spacing-1);
     }
 }
 
-
-.credits {
-    font-family: 'Courier New', Courier, monospace;
+footer {
+    margin-block-start: var(--spacing-1);
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap:var(--spacing-3);
-    left: var(--spacing-5);
-    bottom: var(--spacing-2);
-    position: absolute;
-    color: var(--light);
-    text-decoration: none;
-    height: min-content;
-    & a:visited {
-        color: var(--light);
+    font-family: "Courier New", Courier, monospace;
+    width: calc(100% - var(--spacing-4) * 2);
+    color: var(--dark);
+    font-size: 0.8em;
+    & a:link, a:visited {
+        color: var(--dark);
     }
-    >div {
-        display: inherit;
-        align-items: inherit;
-      gap:var(--spacing-1);
-  }
+    & a:hover {
+        color: var(--dark);
+    }
+
+    .credits {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: var(--spacing-1);
+        color: var(--dark);
+        text-decoration: none;
+        height: min-content;
+        > div {
+            justify-content: center;
+            display: inherit;
+            align-items: inherit;
+            gap: var(--spacing-1);
+        }
+    }
 }
 
 .gameboard {
@@ -173,7 +185,6 @@ dialog {
 }
 
 .board-controls {
-    margin: var(--spacing-2);
     display: flex;
     flex-direction: column;
     gap: var(--spacing-2);
@@ -190,7 +201,7 @@ dialog {
         div {
             display: grid;
             grid-template-columns: repeat(10, 25px);
-            grid-template-rows: repeat(5, 25px);
+            grid-template-rows: repeat(4, 25px);
             max-width: 100%;
             justify-content: center;
             gap: var(--spacing-1);
